@@ -43,7 +43,7 @@ func RespondWithError(w http.ResponseWriter, r *http.Request, e error, status in
 	if err != nil {
 		log.Error().Err(err).Msg("Unable to marshall error json.")
 		status = http.StatusInternalServerError
-		err := errors.New("Something bad happened!")
+		err := errors.New("something bad happened")
 		json = []byte(fmt.Sprintf("{\"status\":%d,\"error\":\"%s\"}", status, err.Error()))
 	}
 

@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/akxcix/butler/cmd/app"
+	"github.com/akxcix/butler/pkg/app"
 )
 
 func main() {

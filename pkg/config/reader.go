@@ -33,7 +33,8 @@ func Read(path string) (*Config, error) {
 
 // models
 type Config struct {
-	Server ServerConfig `yaml:"server"`
+	Server   ServerConfig   `yaml:"server"`
+	Database DatabaseConfig `yaml:"database"`
 }
 
 type ServerConfig struct {

@@ -5,8 +5,10 @@ import (
 	"github.com/go-chi/chi/v5"
 )
 
-func NewRouter() *chi.Mux {
+func SetRouter(app Application) Application {
 	r := chi.NewRouter()
 	r.Get("/health", handlers.HealthCheck)
-	return r
+	app.Router = r
+
+	return app
 }
