@@ -5,7 +5,7 @@ import (
 	"github.com/go-chi/chi/v5"
 )
 
-func SetRouter(app Application) Application {
+func setRouter(app application) application {
 	r := chi.NewRouter()
 	r.Get("/health", handlers.HealthCheck)
 	app.Router = r

@@ -11,13 +11,13 @@ import (
 	"github.com/rs/zerolog/log"
 )
 
-type Application struct {
+type application struct {
 	Config       *config.Config
 	WaitlistRepo *waitlist.Database
 	Router       *chi.Mux
 }
 
-func ReadConfigs(app Application) Application {
+func readConfigs(app application) application {
 	config, err := config.Read("./config.yml")
 	if err != nil {
 		log.Fatal().Err(err)
@@ -27,7 +27,7 @@ func ReadConfigs(app Application) Application {
 	return app
 }
 
-func addRepositories(app Application) Application {
+func addRepositories(app application) application {
 	conf := app.Config
 	if conf == nil {
 		log.Fatal().Msg("Conf is nil")
@@ -42,10 +42,10 @@ func addRepositories(app Application) Application {
 func Run() {
 	zerolog.TimeFieldFormat = zerolog.TimeFormatUnix
 
-	app := Application{}
-	app = ReadConfigs(app)
+	app := application{}
+	app = readConfigs(app)
 	app = addRepositories(app)
-	app = SetRouter(app)
+	app = setRouter(app)
 
 	addr := fmt.Sprintf("%s:%s", app.Config.Server.Host, app.Config.Server.Port)
 	log.Info().Msg(fmt.Sprintf("Running application at %s", addr))
