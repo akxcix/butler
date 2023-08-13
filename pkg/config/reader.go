@@ -12,14 +12,6 @@ var ErrPathNotProvided error = errors.New("config path not provided")
 var ErrUnableToRead error = errors.New("unable to read config file")
 var ErrUnableToParse error = errors.New("unable to parse config file yaml")
 
-type Config struct {
-	Server ServerConfig `yaml:"server"`
-}
-
-type ServerConfig struct {
-	Port string `yaml:"port"`
-}
-
 func Read(path string) (*Config, error) {
 	if path == "" {
 		return nil, ErrPathNotProvided
@@ -37,4 +29,22 @@ func Read(path string) (*Config, error) {
 	}
 
 	return &config, nil
+}
+
+// models
+type Config struct {
+	Server ServerConfig `yaml:"server"`
+}
+
+type ServerConfig struct {
+	Host string `yaml:"host"`
+	Port string `yaml:"port"`
+}
+
+type DatabaseConfig struct {
+	Host         string `yaml:"host"`
+	Port         string `yaml:"port"`
+	User         string `yaml:"user"`
+	Password     string `yaml:"password"`
+	DatabaseName string `yaml:"database-name"`
 }
