@@ -7,6 +7,6 @@ import (
 
 func NewRouter() *chi.Mux {
 	r := chi.NewRouter()
-	r.Get("/", handlers.HealthCheck)
+	r.Get("/health", handlers.HealthCheck)
 	return r
 }
