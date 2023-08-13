@@ -13,7 +13,7 @@ type Database struct {
 	db *sqlx.DB
 }
 
-func New(conf config.DatabaseConfig) *Database {
+func New(conf *config.DatabaseConfig) *Database {
 	log.Info().Msg("Connecting to database")
 
 	dsn := repositories.FormatPostgresDSN(

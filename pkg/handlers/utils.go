@@ -9,6 +9,7 @@ import (
 	"github.com/rs/zerolog/log"
 )
 
+// writing
 type response struct {
 	Status int         `json:"status"`
 	Data   interface{} `json:"data,omitempty"`
@@ -48,11 +49,19 @@ func RespondWithError(w http.ResponseWriter, r *http.Request, e error, status in
 	}
 
 	log.Error().
+		Err(err).
 		Interface("status", status).
-		Interface("error", err.Error()).
 		Msg(http.StatusText(status))
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(status)
 	w.Write(json)
+}
+
+// reading
+type Unmarshalable[T any] struct{}
+
+func (u Unmarshalable[T]) FromRequest(req *http.Request, v *T) error {
+	decoder := json.NewDecoder(req.Body)
+	return decoder.Decode(v)
 }
