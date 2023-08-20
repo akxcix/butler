@@ -1,25 +1,32 @@
-FROM golang:1.19
+# Start with the official Golang image
+FROM golang:1.19 AS builder
 
-# Set destination for COPY
+# Set the current working directory inside the container
 WORKDIR /app
 
-# Download Go modules
+# Copy the go.mod and go.sum files to download dependencies
 COPY go.mod go.sum ./
+
+# Download dependencies
 RUN go mod download
 
-# Copy the source code. Note the slash at the end, as explained in
-# https://docs.docker.com/engine/reference/builder/#copy
+# Copy the rest of the code
 COPY . .
 
-# Build
-RUN CGO_ENABLED=0 GOOS=linux go build -o /main /app/cmd/web/*
+# Build the Go app
+RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o web-app ./cmd/web
 
-# Optional:
-# To bind to a TCP port, runtime parameters must be supplied to the docker command.
-# But we can document in the Dockerfile what ports
-# the application is going to listen on by default.
-# https://docs.docker.com/engine/reference/builder/#expose
+# Use a small base image to create a final container
+FROM alpine:3.14
+
+# Set the current working directory inside the container
+WORKDIR /app
+
+# Copy the built binary from the builder stage
+COPY --from=builder /app/web-app /app/web-app
+
+# Expose port 8080 (or whatever port your app runs on)
 EXPOSE 8080
 
-# Run
-CMD ["/main"]
+# Command to run the app
+CMD ["/app/web-app"]
