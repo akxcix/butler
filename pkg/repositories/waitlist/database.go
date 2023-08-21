@@ -1,8 +1,8 @@
 package waitlist
 
 import (
-	"github.com/akxcix/butler/pkg/config"
-	"github.com/akxcix/butler/pkg/repositories"
+	"github.com/akxcix/nomadcore/pkg/config"
+	"github.com/akxcix/nomadcore/pkg/repositories"
 	"github.com/jmoiron/sqlx"
 	"github.com/rs/zerolog/log"
 

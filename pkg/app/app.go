@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/akxcix/butler/pkg/config"
-	"github.com/akxcix/butler/pkg/services/waitlist"
+	"github.com/akxcix/nomadcore/pkg/config"
+	"github.com/akxcix/nomadcore/pkg/services/waitlist"
 	"github.com/go-chi/chi/v5"
 	"github.com/rs/zerolog"
 	"github.com/rs/zerolog/log"

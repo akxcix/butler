@@ -1,6 +1,6 @@
 package waitlist
 
-import "github.com/akxcix/butler/pkg/repositories"
+import "github.com/akxcix/nomadcore/pkg/repositories"
 
 func (db *Database) AddUser(mail, name string) error {
 	query := `

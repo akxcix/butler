@@ -1,9 +1,9 @@
 package app
 
 import (
-	"github.com/akxcix/butler/pkg/handlers"
-	waitlistHandlers "github.com/akxcix/butler/pkg/handlers/waitlist"
-	"github.com/akxcix/butler/pkg/services/waitlist"
+	"github.com/akxcix/nomadcore/pkg/handlers"
+	waitlistHandlers "github.com/akxcix/nomadcore/pkg/handlers/waitlist"
+	"github.com/akxcix/nomadcore/pkg/services/waitlist"
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/cors"

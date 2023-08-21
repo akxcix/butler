@@ -1,4 +1,4 @@
-module github.com/akxcix/butler
+module github.com/akxcix/nomadcore
 
 go 1.19
 

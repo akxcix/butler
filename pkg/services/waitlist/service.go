@@ -3,8 +3,8 @@ package waitlist
 import (
 	"github.com/rs/zerolog/log"
 
-	"github.com/akxcix/butler/pkg/config"
-	"github.com/akxcix/butler/pkg/repositories/waitlist"
+	"github.com/akxcix/nomadcore/pkg/config"
+	"github.com/akxcix/nomadcore/pkg/repositories/waitlist"
 )
 
 type Service struct {

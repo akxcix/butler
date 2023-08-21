@@ -3,8 +3,8 @@ package waitlist
 import (
 	"net/http"
 
-	"github.com/akxcix/butler/pkg/handlers"
-	"github.com/akxcix/butler/pkg/services/waitlist"
+	"github.com/akxcix/nomadcore/pkg/handlers"
+	"github.com/akxcix/nomadcore/pkg/services/waitlist"
 )
 
 type Handlers struct {

@@ -3,10 +3,10 @@ package main
 import (
 	"fmt"
 
-	"github.com/akxcix/butler/pkg/app"
+	"github.com/akxcix/nomadcore/pkg/app"
 )
 
 func main() {
-	fmt.Println("Starting butler...")
+	fmt.Println("Starting NomadCore...")
 	app.Run()
 }
